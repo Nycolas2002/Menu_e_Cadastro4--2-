@@ -17,10 +17,13 @@ int main(void) {
         printf("1 - Cadastrar Produto\n");
         printf("2 - Listar Produtos\n");
         printf("3 - Pesquisar Produto\n");
-        printf("4 - Categorias\n");
-        printf("5 - Sair\n");
+        printf("4 - Alterar Estoque de um Produto\n");
+        printf("5 - Remover Produto\n");
+        printf("6 - Categorias\n");
+        printf("7 - Sair\n");
+
         resultado = lerInteiro("Escolha uma opcao: ", &opcao);
-        if (resultado == -1) opcao = 5;
+        if (resultado == -1) opcao = 7;
         else if (resultado != 1) opcao = 0;
 
         switch (opcao) {
@@ -35,16 +38,21 @@ int main(void) {
                 pesquisarProduto(produtos, totalProdutos, categorias, totalCategorias);
                 break;
             case 4:
-                menuCategorias(categorias, &totalCategorias);
+                alterarEstoqueProduto(produtos, totalProdutos);
                 break;
             case 5:
+                removerProduto(produtos, totalProdutos);
+                break;
+            case 6:
+                menuCategorias(categorias, &totalCategorias);
+                break;
+            case 7:
                 break;
             default:
-                printf("\nOpcao invalida! Digite 1, 2, 3, 4 ou 5.\n");
+                printf("\nOpcao invalida! Digite um numero de 1 a 7.\n");
         }
-    } while (opcao != 5);
+    } while (opcao != 7);
 
-    /* Persiste as duas listas antes de encerrar o sistema. */
     categoriasSalvas = salvarCategorias(categorias, totalCategorias);
     produtosSalvos = salvarProdutos(produtos, totalProdutos);
     if (categoriasSalvas && produtosSalvos) {

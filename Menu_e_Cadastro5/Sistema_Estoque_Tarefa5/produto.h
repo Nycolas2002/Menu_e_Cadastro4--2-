@@ -12,7 +12,8 @@ typedef struct {
     float preco;
     int quantidade;
     int disponivel;
-    int codigo_categoria;  /* Referencia ao codigo de uma Categoria. */
+    int codigo_categoria;
+    int ativo; /* 1 = ativo; 0 = removido logicamente. */
 } Produto;
 
 void exibirProduto(Produto produto, const Categoria categorias[], int totalCategorias);
@@ -24,5 +25,7 @@ void listarProdutos(const Produto produtos[], int total,
                    const Categoria categorias[], int totalCategorias);
 void pesquisarProduto(const Produto produtos[], int total,
                      const Categoria categorias[], int totalCategorias);
+void alterarEstoqueProduto(Produto produtos[], int total);
+void removerProduto(Produto produtos[], int total);
 
 #endif
