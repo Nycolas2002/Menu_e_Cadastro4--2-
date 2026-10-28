@@ -52,8 +52,8 @@ produto.h/.c     : estrutura e operacoes de produto
 categoria.h/.c   : estrutura, cadastro, listagem e submenu de categorias
 arquivo.h/.c     : leitura e gravacao dos arquivos de dados
 util.h/.c        : entrada e validacoes genericas
-Projeto1.dev     : projeto para abrir no Dev-C++
-Makefile.win     : configuracao de compilacao MinGW
+Sistema_Estoque_Tarefa5.dev : projeto para abrir no Dev-C++
 
-Observacao: os arquivos .o e .exe sao artefatos de compilacao; podem ser
-gerados novamente e nao sao necessarios para manter o codigo-fonte.
+Observacao: arquivos .o, .exe, .layout e Makefile.win antigo nao sao
+necessarios para manter o codigo-fonte. O Dev-C++ pode gerar os artefatos
+de compilacao novamente.
