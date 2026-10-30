@@ -1,0 +1,59 @@
+PROJETO FINAL - SISTEMA DE ESTOQUE - TAREFA 5
+Alterar estoque, remover produto, categorias e persistencia em arquivo
+
+COMO COMPILAR COM GCC
+Na pasta do projeto, execute:
+  gcc -std=c99 -Wall -Wextra -pedantic main.c produto.c categoria.c arquivo.c util.c -o sistema_estoque
+
+Depois execute:
+  Windows: sistema_estoque.exe
+  Linux/macOS: ./sistema_estoque
+
+MENU PRINCIPAL
+1 - Cadastrar Produto
+2 - Listar Produtos
+3 - Pesquisar Produto (por codigo ou por nome)
+4 - Alterar Estoque de um Produto
+5 - Remover Produto
+6 - Categorias
+7 - Sair
+
+SUBMENU CATEGORIAS
+1 - Cadastrar Categoria
+2 - Listar Categorias
+3 - Voltar
+
+REGRAS PRINCIPAIS
+- Limite de 50 registros de produtos e 20 categorias.
+- Codigo de produto/categoria deve ser positivo e unico.
+- O codigo de produto nao pode ser reutilizado mesmo depois de uma remocao.
+- Produto exige nome preenchido, prateleira A/B/C/D, preco maior que zero,
+  quantidade inicial nao negativa e categoria existente.
+- Disponibilidade e calculada automaticamente: 1 se quantidade > 0; caso contrario, 0.
+- Alteracao de estoque registra entrada ou saida com quantidade positiva.
+- Saida maior que o estoque atual e rejeitada.
+- Remover produto marca ativo = 0; nao apaga o registro da lista nem do arquivo.
+- Listagem e pesquisa ignoram produtos inativos.
+- Categorias permanecem independentes dos produtos.
+
+PERSISTENCIA
+- categorias.txt guarda codigo e nome, um campo por linha.
+- produtos.txt guarda codigo, nome, prateleira, preco, quantidade,
+  disponibilidade calculada, codigo da categoria e ativo, um campo por linha.
+- Os dois arquivos sao carregados no inicio e salvos ao selecionar Sair.
+- Se um arquivo nao existir, a lista correspondente comeca vazia.
+- O carregador aceita o formato de produtos da Tarefa 4 e define ativo = 1
+  para os registros antigos; ao sair, grava no formato da Tarefa 5.
+- Os arquivos sao criados no diretorio de execucao do programa.
+
+ARQUIVOS DO CODIGO
+main.c           : menu principal, inicializacao, chamadas e encerramento
+produto.h/.c     : estrutura e operacoes de produto
+categoria.h/.c   : estrutura, cadastro, listagem e submenu de categorias
+arquivo.h/.c     : leitura e gravacao dos arquivos de dados
+util.h/.c        : entrada e validacoes genericas
+Sistema_Estoque_Tarefa5.dev : projeto para abrir no Dev-C++
+
+Observacao: arquivos .o, .exe, .layout e Makefile.win antigo nao sao
+necessarios para manter o codigo-fonte. O Dev-C++ pode gerar os artefatos
+de compilacao novamente.
